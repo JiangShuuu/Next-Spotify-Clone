@@ -45,8 +45,8 @@ export default function Sidebar({ children }: SidebarProps) {
         <Box className="h-full overflow-y-auto">
           <Library />
         </Box>
-        <main className="flex-1 h-full py-2 overflow-y-auto">{children}</main>
       </div>
+      <main className="flex-1 h-full py-2 overflow-y-auto">{children}</main>
     </div>
   );
 }
