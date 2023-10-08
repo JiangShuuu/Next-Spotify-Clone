@@ -8,6 +8,7 @@ import { useUser } from '~/hooks/useUser'
 import useUploadModal from '~/hooks/useUploadModal'
 import { Song } from '~/types'
 import MediaItem from './MediaItem'
+import useOnPlay from '~/hooks/useOnPlay'
 
 interface LibraryProps {
   songs: Song[]
@@ -25,6 +26,7 @@ export default function Library({ songs }: LibraryProps) {
     // TODO: Check for subscription
     return uploadModal.onOpen()
   }
+  const onPlay = useOnPlay(songs)
 
   return (
     <div className='flex flex-col'>
@@ -41,7 +43,11 @@ export default function Library({ songs }: LibraryProps) {
       </div>
       <div className='flex flex-col px-3 mt-4 gap-y-2'>
         {songs.map((item) => (
-          <MediaItem onClick={() => {}} key={item.id} data={item} />
+          <MediaItem
+            onClick={(id: string) => onPlay(id)}
+            key={item.id}
+            data={item}
+          />
         ))}
       </div>
     </div>
