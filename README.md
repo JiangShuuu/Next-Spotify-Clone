@@ -2,6 +2,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
+stripe listen --forward-to localhost:3000/api/webhooks
 First, run the development server:
 
 ```bash
