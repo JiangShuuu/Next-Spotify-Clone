@@ -8,6 +8,7 @@ import { useUser } from '~/hooks/useUser'
 import { postData } from '~/libs/helper'
 // import { getStripe } from '~/libs/stripeClient'
 import { Price, ProductWithPrice } from '~/types'
+import axios from 'axios'
 
 import Modal from './Modal'
 import Button from './Button'
@@ -39,9 +40,15 @@ const SubscribeModal: React.FC<SubscribeModalProps> = ({ products }) => {
   }
 
   const handleCheckout = async () => {
-    console.log('hhihihi')
-    const ecpayUrl = process.env.NEXT_PUBLIC_ECPAY_URL
-    if (ecpayUrl) window.location.href = ecpayUrl
+    const { data } = await axios.post('/api/ecpay', {
+      params: {
+        id: 123,
+      },
+    })
+    console.log('hhihihi', data)
+
+    // const ecpayUrl = process.env.NEXT_PUBLIC_ECPAY_URL
+    // if (ecpayUrl) window.location.href = ecpayUrl
   }
 
   // const handleCheckout = async (price: Price) => {
